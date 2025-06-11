@@ -1,0 +1,137 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 5%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 20% 6%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 20% 5%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 158 100% 50%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 220 10% 10%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 220 10% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 158 100% 50%;
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 220 10% 15%;
+    --input: 220 10% 15%;
+    --ring: 158 100% 50%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sora;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative uppercase text-sm font-medium tracking-wide;
+    @apply after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:-bottom-1 after:left-0;
+    @apply after:bg-neon after:origin-bottom-right after:transition-transform after:duration-300;
+    @apply hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+
+  .active-nav-link {
+    @apply after:scale-x-100;
+  }
+
+  .btn-primary {
+    @apply bg-neon text-black font-medium px-6 py-3 rounded-md border border-neon;
+    @apply hover:bg-transparent hover:text-neon transition-colors duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-neon focus:ring-opacity-50;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-neon font-medium px-6 py-3 rounded-md border border-neon;
+    @apply hover:bg-neon hover:text-black transition-colors duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-neon focus:ring-opacity-50;
+  }
+
+  .section-heading {
+    @apply text-xl md:text-2xl uppercase tracking-wider text-neon font-light mb-2;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-5xl font-bold mb-6 md:mb-12;
+  }
+
+  .card-highlight {
+    @apply bg-card rounded-lg p-6 border border-muted hover:border-neon transition-colors duration-300;
+  }
+
+  .numbered-item {
+    @apply relative pl-12 mb-8;
+  }
+  
+  .numbered-item:before {
+    @apply content-[attr(data-number)] absolute left-0 top-0 w-8 h-8;
+    @apply flex items-center justify-center rounded-full border border-neon text-neon font-mono;
+  }
+
+  /* Anime.js specific styles */
+  .glow-button {
+    animation: pulse-neon 2s infinite;
+  }
+
+  .typewriter-text {
+    overflow: hidden;
+    border-right: 2px solid #00ff8c;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.05em;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #00ff8c }
+  }
+
+  @keyframes pulse-neon {
+    0%, 100% {
+      box-shadow: 0 0 5px #00ff8c, 0 0 10px #00ff8c;
+    }
+    50% {
+      box-shadow: 0 0 20px #00ff8c, 0 0 30px #00ff8c;
+    }
+  }
+}
